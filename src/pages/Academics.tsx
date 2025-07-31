@@ -2,8 +2,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Share2, BookOpen, TrendingUp, Award, Calendar, Users } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Share2, BookOpen, TrendingUp, Award, Calendar, Users, Brain, Zap, GraduationCap, Sparkles, MessageCircle } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
+import StudyMode from "@/components/ai/StudyMode";
 
 const Academics = () => {
   const academicOverview = {
@@ -156,12 +158,66 @@ const Academics = () => {
         </Card>
       </div>
 
+      {/* ChatGPT Study Mode Feature Highlight */}
+      <Alert className="border-2 border-primary/20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="relative">
+              <GraduationCap className="h-8 w-8 text-primary" />
+              <Badge 
+                variant="secondary" 
+                className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1 py-0 h-4"
+              >
+                NEW
+              </Badge>
+            </div>
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <h3 className="font-bold text-lg text-foreground">🎓 ChatGPT Study Mode</h3>
+              <Badge variant="outline" className="text-green-600 border-green-300">July 2025</Badge>
+            </div>
+            <AlertDescription className="text-muted-foreground mb-4">
+              <p className="mb-2">
+                <strong>Revolutionary AI Learning:</strong> Unlike traditional AI that gives direct answers, Study Mode guides you through discovery using Socratic questioning.
+              </p>
+              <ul className="space-y-1 text-sm ml-4">
+                <li>• <strong>Thought-provoking questions</strong> instead of direct answers</li>
+                <li>• <strong>Step-by-step hints</strong> that guide your thinking</li>
+                <li>• <strong>Interactive learning loops</strong> tailored to your skill level</li>
+                <li>• <strong>Real-time adaptation</strong> based on your performance</li>
+              </ul>
+            </AlertDescription>
+            <div className="flex items-center gap-3">
+              <Button 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                onClick={() => {
+                  const studyModeSection = document.getElementById('study-mode-section');
+                  studyModeSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <Zap className="h-4 w-4 mr-2" />
+                Try Study Mode Now
+              </Button>
+              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <Sparkles className="h-4 w-4" />
+                <span>Powered by GPT-4.1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Alert>
+
       <Tabs defaultValue="performance" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="performance">Performance</TabsTrigger>
           <TabsTrigger value="courses">Current Courses</TabsTrigger>
           <TabsTrigger value="skills">Skills Assessment</TabsTrigger>
           <TabsTrigger value="achievements">Achievements</TabsTrigger>
+          <TabsTrigger value="study-mode" className="text-primary font-semibold">
+            <GraduationCap className="h-4 w-4 mr-1" />
+            Study Mode
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="performance" className="space-y-6">
@@ -300,6 +356,59 @@ const Academics = () => {
                   </div>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="study-mode" className="space-y-6" id="study-mode-section">
+          <Card className="border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-secondary/5">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Brain className="h-6 w-6 text-primary" />
+                ChatGPT Study Mode
+                <Badge variant="secondary" className="bg-green-500/20 text-green-700 border-green-300">
+                  Revolutionary Learning
+                </Badge>
+              </CardTitle>
+              <CardDescription>
+                Experience the future of AI tutoring - where you discover answers through guided questioning instead of being given direct solutions.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <MessageCircle className="h-5 w-5 text-blue-600" />
+                    <h4 className="font-semibold text-blue-900 dark:text-blue-100">Socratic Method</h4>
+                  </div>
+                  <p className="text-sm text-blue-700 dark:text-blue-200">
+                    Guides you with questions instead of giving direct answers
+                  </p>
+                </div>
+                <div className="bg-purple-50 dark:bg-purple-950/20 border border-purple-200 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Brain className="h-5 w-5 text-purple-600" />
+                    <h4 className="font-semibold text-purple-900 dark:text-purple-100">Adaptive Learning</h4>
+                  </div>
+                  <p className="text-sm text-purple-700 dark:text-purple-200">
+                    Adjusts difficulty based on your understanding
+                  </p>
+                </div>
+                <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <h4 className="font-semibold text-green-900 dark:text-green-100">Critical Thinking</h4>
+                  </div>
+                  <p className="text-sm text-green-700 dark:text-green-200">
+                    Builds problem-solving skills through discovery
+                  </p>
+                </div>
+              </div>
+              
+              <StudyMode 
+                studentName="Alex Johnson"
+                studentGrade="12th Grade"
+              />
             </CardContent>
           </Card>
         </TabsContent>
