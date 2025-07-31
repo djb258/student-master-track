@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Share2, Copy, Mail } from "lucide-react";
+import { Share2, Copy, Mail, Brain } from "lucide-react";
+import AITutor from "@/components/ai/AITutor";
 
 interface Student {
   id: string;
@@ -655,6 +656,44 @@ export default function StudentProfile() {
             </Card>
           </div>
         )}
+
+        {/* AI Academic Assistant Section */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-3 mb-6">
+            <Brain className="h-8 w-8 text-blue-400" />
+            <h2 className="text-2xl font-bold text-white">
+              🤖 AI Academic Assistant
+            </h2>
+          </div>
+          
+          <AITutor 
+            studentId={student_id}
+            studentData={{
+              name: `${student.first_name} ${student.last_name}`,
+              gpa: student.gpa.toString(),
+              courses: [
+                { name: "AP Calculus BC", grade: "A-", teacher: "Dr. Mitchell" },
+                { name: "AP English Literature", grade: "A", teacher: "Ms. Adams" },
+                { name: "AP Physics C", grade: "B+", teacher: "Mr. Chen" },
+                { name: "AP US History", grade: "A", teacher: "Mrs. Rodriguez" }
+              ],
+              recentGrades: [
+                { assignment: "Calculus Unit 4 Test", grade: "B+", date: "2024-03-01" },
+                { assignment: "English Essay", grade: "A", date: "2024-02-28" },
+                { assignment: "Physics Lab Report", grade: "B", date: "2024-02-26" },
+                { assignment: "History DBQ", grade: "A-", date: "2024-02-25" }
+              ],
+              assignmentCompletion: 93,
+              attendance: student.attendance_rate,
+              subjectPerformance: [
+                { subject: "Mathematics", grade: 88 },
+                { subject: "English", grade: 95 },
+                { subject: "Science", grade: 85 },
+                { subject: "History", grade: 92 }
+              ]
+            }}
+          />
+        </div>
       </div>
     </div>
   );

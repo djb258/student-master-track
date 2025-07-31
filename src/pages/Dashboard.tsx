@@ -12,7 +12,8 @@ import {
   TrendingUp,
   Calendar,
   Award,
-  Target
+  Target,
+  Brain
 } from "lucide-react";
 
 const Dashboard = () => {
@@ -51,6 +52,15 @@ const Dashboard = () => {
   ];
 
   const moduleCards = [
+    {
+      title: "AI Analytics Dashboard",
+      description: "AI-powered student insights and predictive analytics",
+      route: "/ai-dashboard",
+      icon: Brain,
+      stats: "Smart insights enabled",
+      color: "bg-violet-50 border-violet-200",
+      iconColor: "text-violet-600"
+    },
     {
       title: "Academic Performance",
       description: "View detailed academic records, grades, and progress tracking",
