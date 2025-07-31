@@ -9,7 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 
 interface Guardian {
   id: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   relationship: string;
   phone: string;
   email: string;
@@ -19,14 +20,17 @@ const Intake = () => {
   const { toast } = useToast();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [profileUrl, setProfileUrl] = useState("");
+  const [studentEmail, setStudentEmail] = useState("");
+  const [studentPhone, setStudentPhone] = useState("");
   const [guardians, setGuardians] = useState<Guardian[]>([
-    { id: "1", name: "", relationship: "", phone: "", email: "" }
+    { id: "1", first_name: "", last_name: "", relationship: "", phone: "", email: "" }
   ]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const addGuardian = () => {
     const newId = Date.now().toString();
-    setGuardians([...guardians, { id: newId, name: "", relationship: "", phone: "", email: "" }]);
+    setGuardians([...guardians, { id: newId, first_name: "", last_name: "", relationship: "", phone: "", email: "" }]);
   };
 
   const removeGuardian = (id: string) => {
@@ -47,44 +51,58 @@ const Intake = () => {
 
     try {
       // Validate required fields
-      if (!firstName.trim() || !lastName.trim()) {
+      if (!firstName.trim() || !lastName.trim() || !profileUrl.trim()) {
         toast({
           title: "Missing Information",
-          description: "Please enter both first and last name.",
+          description: "Please enter first name, last name, and profile URL.",
           variant: "destructive"
         });
         return;
       }
 
-      if (guardians.some(g => !g.name.trim())) {
+      if (guardians.some(g => !g.first_name.trim() || !g.last_name.trim())) {
         toast({
           title: "Missing Guardian Information",
-          description: "Please enter all guardian names.",
+          description: "Please enter all required guardian information.",
           variant: "destructive"
         });
         return;
       }
 
-      // Here you would send to your Render API
+      // Send to Render API
       const payload = {
-        student: { firstName, lastName },
-        guardians: guardians.filter(g => g.name.trim())
+        first_name: firstName,
+        last_name: lastName,
+        profile_url: profileUrl,
+        student_email: studentEmail,
+        student_phone: studentPhone,
+        guardians: guardians.filter(g => g.first_name.trim() && g.last_name.trim())
       };
 
-      console.log("Submitting:", payload);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch("https://render-student-profile.onrender.com/intake", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
 
       toast({
         title: "Success!",
-        description: "Student intake submitted successfully.",
+        description: "Student and guardians saved successfully!",
       });
 
       // Reset form
       setFirstName("");
       setLastName("");
-      setGuardians([{ id: "1", name: "", relationship: "", phone: "", email: "" }]);
+      setProfileUrl("");
+      setStudentEmail("");
+      setStudentPhone("");
+      setGuardians([{ id: "1", first_name: "", last_name: "", relationship: "", phone: "", email: "" }]);
 
     } catch (error) {
       toast({
@@ -143,6 +161,36 @@ const Intake = () => {
                     required
                   />
                 </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="profileUrl">Profile URL *</Label>
+                  <Input
+                    id="profileUrl"
+                    value={profileUrl}
+                    onChange={(e) => setProfileUrl(e.target.value)}
+                    placeholder="Enter profile URL"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="studentEmail">Student Email</Label>
+                  <Input
+                    id="studentEmail"
+                    type="email"
+                    value={studentEmail}
+                    onChange={(e) => setStudentEmail(e.target.value)}
+                    placeholder="Enter student email"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="studentPhone">Student Phone</Label>
+                  <Input
+                    id="studentPhone"
+                    type="tel"
+                    value={studentPhone}
+                    onChange={(e) => setStudentPhone(e.target.value)}
+                    placeholder="Enter student phone"
+                  />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -155,7 +203,7 @@ const Intake = () => {
                 Guardian Information
               </CardTitle>
               <CardDescription>
-                Add at least one guardian. You can add multiple guardians if needed.
+                Add at least one guardian. You may add more.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -183,11 +231,20 @@ const Intake = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Guardian Name *</Label>
+                      <Label>Guardian First Name *</Label>
                       <Input
-                        value={guardian.name}
-                        onChange={(e) => updateGuardian(guardian.id, 'name', e.target.value)}
-                        placeholder="Enter guardian name"
+                        value={guardian.first_name}
+                        onChange={(e) => updateGuardian(guardian.id, 'first_name', e.target.value)}
+                        placeholder="Enter first name"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Guardian Last Name *</Label>
+                      <Input
+                        value={guardian.last_name}
+                        onChange={(e) => updateGuardian(guardian.id, 'last_name', e.target.value)}
+                        placeholder="Enter last name"
                         required
                       />
                     </div>
@@ -210,21 +267,21 @@ const Intake = () => {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label>Phone Number</Label>
-                      <Input
-                        type="tel"
-                        value={guardian.phone}
-                        onChange={(e) => updateGuardian(guardian.id, 'phone', e.target.value)}
-                        placeholder="Enter phone number"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Email</Label>
+                      <Label>Guardian Email</Label>
                       <Input
                         type="email"
                         value={guardian.email}
                         onChange={(e) => updateGuardian(guardian.id, 'email', e.target.value)}
-                        placeholder="Enter email address"
+                        placeholder="Enter guardian email"
+                      />
+                    </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <Label>Guardian Phone</Label>
+                      <Input
+                        type="tel"
+                        value={guardian.phone}
+                        onChange={(e) => updateGuardian(guardian.id, 'phone', e.target.value)}
+                        placeholder="Enter guardian phone"
                       />
                     </div>
                   </div>
