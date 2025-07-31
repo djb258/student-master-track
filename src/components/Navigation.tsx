@@ -38,14 +38,14 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-wrestling-navy/95 backdrop-blur-sm border-b border-white/10 sticky top-0 z-50">
+    <nav className="bg-slate-900/95 backdrop-blur-sm border-b border-slate-200/10 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl">🏆</div>
-            <span className="text-xl font-bold text-wrestling-gold">
-              Wrestling Program
+            <div className="text-2xl">📚</div>
+            <span className="text-xl font-bold text-blue-500">
+              Student Management
             </span>
           </Link>
 
@@ -62,8 +62,8 @@ export function Navigation() {
                   className={cn(
                     "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     isActive
-                      ? "bg-wrestling-gold text-wrestling-navy"
-                      : "text-white hover:bg-white/10 hover:text-wrestling-gold"
+                      ? "bg-blue-500 text-white"
+                      : "text-slate-300 hover:bg-slate-800 hover:text-blue-400"
                   )}
                 >
                   <Icon className="h-4 w-4" />
@@ -76,7 +76,7 @@ export function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-md text-white hover:bg-white/10"
+            className="md:hidden p-2 rounded-md text-slate-300 hover:bg-slate-800"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -102,8 +102,8 @@ export function Navigation() {
                     className={cn(
                       "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                       isActive
-                        ? "bg-wrestling-gold text-wrestling-navy"
-                        : "text-white hover:bg-white/10 hover:text-wrestling-gold"
+                        ? "bg-blue-500 text-white"
+                        : "text-slate-300 hover:bg-slate-800 hover:text-blue-400"
                     )}
                   >
                     <Icon className="h-4 w-4" />

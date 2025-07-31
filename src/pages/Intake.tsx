@@ -119,20 +119,20 @@ const Intake = () => {
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">
-            Wrestling Program Intake
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+            Student Intake Form
           </h1>
           <p className="text-muted-foreground">
-            Enter student and guardian information to get started
+            Enter student and guardian information to complete enrollment
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Student Information */}
-          <Card className="shadow-lg border-0" style={{ boxShadow: 'var(--shadow-elegant)' }}>
+          <Card className="shadow-lg border-0">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-accent" />
+                <Users className="h-5 w-5 text-blue-600" />
                 Student Information
               </CardTitle>
               <CardDescription>
@@ -196,10 +196,10 @@ const Intake = () => {
           </Card>
 
           {/* Guardian Information */}
-          <Card className="shadow-lg border-0" style={{ boxShadow: 'var(--shadow-elegant)' }}>
+          <Card className="shadow-lg border-0">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-accent" />
+                <Users className="h-5 w-5 text-green-600" />
                 Guardian Information
               </CardTitle>
               <CardDescription>
@@ -292,7 +292,7 @@ const Intake = () => {
                 type="button"
                 variant="outline"
                 onClick={addGuardian}
-                className="w-full border-dashed border-2 border-accent/50 text-accent hover:bg-accent/10 hover:border-accent transition-all duration-300"
+                className="w-full border-dashed border-2 border-blue-300 text-blue-600 hover:bg-blue-50 hover:border-blue-500 transition-all duration-300"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Another Guardian
@@ -303,7 +303,7 @@ const Intake = () => {
           {/* Submit Button */}
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-primary to-wrestling-navy hover:shadow-lg transition-all duration-300 text-lg py-6"
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-lg transition-all duration-300 text-lg py-6"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Submitting..." : "Submit Intake"}

@@ -118,15 +118,15 @@ const Reports = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-wrestling-navy to-wrestling-navy/90">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-wrestling-gold mb-4">
+          <h1 className="text-4xl font-bold text-slate-800 mb-4">
             📊 Reports & Analytics
           </h1>
-          <p className="text-xl text-white/80">
-            Generate comprehensive reports and view analytics for your wrestling program
+          <p className="text-xl text-slate-600">
+            Generate comprehensive reports and view analytics for your student program
           </p>
         </div>
 
@@ -135,21 +135,21 @@ const Reports = () => {
           <DashboardCard
             title="Total Students"
             value="24"
-            description="Active wrestlers"
+            description="Active students"
             icon={Users}
             trend={{ value: 12, isPositive: true, label: "vs last month" }}
           />
           <DashboardCard
-            title="Average Weight"
-            value="142 lbs"
-            description="Team average"
+            title="Average Grade"
+            value="85%"
+            description="Program average"
             icon={Target}
             trend={{ value: 3, isPositive: true, label: "vs last month" }}
           />
           <DashboardCard
-            title="Win Rate"
-            value="78%"
-            description="This season"
+            title="Completion Rate"
+            value="92%"
+            description="Course completion"
             icon={Award}
             trend={{ value: 5, isPositive: true, label: "vs last season" }}
           />

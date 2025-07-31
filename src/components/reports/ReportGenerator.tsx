@@ -46,32 +46,32 @@ export function ReportGenerator({ onGenerate, isLoading = false }: ReportGenerat
   };
 
   return (
-    <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+    <Card className="bg-white border shadow-lg">
       <CardHeader>
-        <CardTitle className="text-wrestling-gold flex items-center gap-2">
+        <CardTitle className="text-slate-800 flex items-center gap-2">
           <FileText className="h-5 w-5" />
           Report Generator
         </CardTitle>
-        <CardDescription className="text-white/70">
-          Generate comprehensive reports for your wrestling program
+        <CardDescription className="text-slate-600">
+          Generate comprehensive reports for your student program
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Report Type Selection */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-white/70">Report Type</label>
+          <label className="text-sm font-medium text-slate-700">Report Type</label>
           <Select
             value={config.type}
             onValueChange={(value) => setConfig(prev => ({ ...prev, type: value as ReportConfig['type'] }))}
           >
-            <SelectTrigger className="bg-white/5 border-white/20 text-white">
+            <SelectTrigger className="bg-white border-slate-300 text-slate-800">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-wrestling-navy border-white/20">
+            <SelectContent className="bg-white border-slate-200">
               {reportTypes.map((type) => {
                 const Icon = type.icon;
                 return (
-                  <SelectItem key={type.value} value={type.value} className="text-white hover:bg-white/10">
+                  <SelectItem key={type.value} value={type.value} className="text-slate-800 hover:bg-slate-100">
                     <div className="flex items-center gap-2">
                       <Icon className="h-4 w-4" />
                       {type.label}
@@ -85,17 +85,17 @@ export function ReportGenerator({ onGenerate, isLoading = false }: ReportGenerat
 
         {/* Export Format */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-white/70">Export Format</label>
+          <label className="text-sm font-medium text-slate-700">Export Format</label>
           <Select
             value={config.format}
             onValueChange={(value) => setConfig(prev => ({ ...prev, format: value as ReportConfig['format'] }))}
           >
-            <SelectTrigger className="bg-white/5 border-white/20 text-white">
+            <SelectTrigger className="bg-white border-slate-300 text-slate-800">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-wrestling-navy border-white/20">
+            <SelectContent className="bg-white border-slate-200">
               {exportFormats.map((format) => (
-                <SelectItem key={format.value} value={format.value} className="text-white hover:bg-white/10">
+                <SelectItem key={format.value} value={format.value} className="text-slate-800 hover:bg-slate-100">
                   {format.label}
                 </SelectItem>
               ))}
@@ -105,13 +105,13 @@ export function ReportGenerator({ onGenerate, isLoading = false }: ReportGenerat
 
         {/* Date Range */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-white/70">Date Range (Optional)</label>
+          <label className="text-sm font-medium text-slate-700">Date Range (Optional)</label>
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="text-xs text-white/50">Start Date</label>
+              <label className="text-xs text-slate-500">Start Date</label>
               <input
                 type="date"
-                className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-md text-white text-sm"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-slate-800 text-sm"
                 onChange={(e) => {
                   const start = e.target.value ? new Date(e.target.value) : undefined;
                   setConfig(prev => ({
@@ -122,10 +122,10 @@ export function ReportGenerator({ onGenerate, isLoading = false }: ReportGenerat
               />
             </div>
             <div>
-              <label className="text-xs text-white/50">End Date</label>
+              <label className="text-xs text-slate-500">End Date</label>
               <input
                 type="date"
-                className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-md text-white text-sm"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-slate-800 text-sm"
                 onChange={(e) => {
                   const end = e.target.value ? new Date(e.target.value) : undefined;
                   setConfig(prev => ({
@@ -142,11 +142,11 @@ export function ReportGenerator({ onGenerate, isLoading = false }: ReportGenerat
         <Button
           onClick={handleGenerate}
           disabled={isLoading}
-          className="w-full bg-wrestling-gold hover:bg-wrestling-gold/90 text-wrestling-navy font-semibold"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-wrestling-navy"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
               Generating...
             </div>
           ) : (
