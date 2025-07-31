@@ -9,6 +9,8 @@ import Intake from "./pages/Intake";
 import Dashboard from "./pages/Dashboard";
 import Reports from "./pages/Reports";
 import StudentProfile from "./pages/StudentProfile";
+import WrestlingTeam from "./pages/WrestlingTeam";
+import WrestlingStats from "./pages/WrestlingStats";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/profile/:student_id" element={<StudentProfile />} />
+          <Route path="/wrestling/team" element={<WrestlingTeam />} />
+          <Route path="/wrestling/stats" element={<WrestlingStats />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
