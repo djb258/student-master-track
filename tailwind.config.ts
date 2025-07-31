@@ -52,6 +52,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				wrestling: {
+					gold: 'hsl(var(--wrestling-gold))',
+					navy: 'hsl(var(--wrestling-navy))',
+					light: 'hsl(var(--wrestling-light))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
