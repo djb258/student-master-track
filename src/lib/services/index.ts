@@ -1,15 +1,6 @@
-// Export all services
-export { StudentService } from './studentService';
-export { TeacherService } from './teacherService';
-export { CourseService } from './courseService';
-export { EnrollmentService } from './enrollmentService';
-export { AttendanceService } from './attendanceService';
-export { GradeService } from './gradeService';
-export { ParentService } from './parentService';
-export { SchoolService } from './schoolService';
-export { ClassService } from './classService';
-export { ScheduleService } from './scheduleService';
+// Export existing services
 export { DashboardService } from './dashboardService';
+export { ReportService } from './reportService';
 
 // Export the generic database service
-export { DatabaseService, createService } from '../databaseService'; 
+export { DatabaseService, createService, studentService, teacherService, courseService } from '../databaseService';

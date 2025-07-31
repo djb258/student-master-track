@@ -1,7 +1,7 @@
 import type { GenericDataRequest, GenericDataResponse } from './types';
 
 // Mock data storage
-const mockData = {
+const mockData: Record<string, any[]> = {
   students: [
     {
       id: '1',
@@ -97,7 +97,7 @@ export class MockApiClient {
       case 'create':
         const newItem = {
           id: generateId(),
-          ...params?.data,
+          ...(params?.data as Record<string, unknown>),
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         };
@@ -112,7 +112,7 @@ export class MockApiClient {
         }
         const updatedItem = {
           ...tableData[updateIndex],
-          ...params?.data,
+          ...(params?.data as Record<string, unknown>),
           updated_at: new Date().toISOString()
         };
         tableData[updateIndex] = updatedItem;
@@ -128,7 +128,7 @@ export class MockApiClient {
         return createResponse(deletedItem as T, `Deleted ${table}`);
 
       case 'search':
-        const searchTerm = params?.filters?.search as string;
+        const searchTerm = (params?.filters as Record<string, unknown>)?.search as string;
         if (searchTerm) {
           const filtered = tableData.filter((item: any) => 
             Object.values(item).some(value => 

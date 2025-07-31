@@ -133,10 +133,8 @@ export class DashboardService {
 
   // Export data for reporting
   async exportData(type: 'students' | 'teachers' | 'courses' | 'grades' | 'attendance', format: 'csv' | 'excel' = 'csv'): Promise<Blob> {
-    const response = await apiClient.get(`/dashboard/export?type=${type}&format=${format}`, {
-      responseType: 'blob'
-    });
-    return response;
+    const response = await apiClient.get(`/dashboard/export?type=${type}&format=${format}`);
+    return new Blob([JSON.stringify(response)], { type: 'application/json' });
   }
 
   // Get custom reports

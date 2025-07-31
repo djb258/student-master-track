@@ -468,7 +468,7 @@ export interface SchoolStats {
 }
 
 // ORBT-compliant generic data request interface
-export interface GenericDataRequest {
+export interface GenericDataRequest extends Record<string, unknown> {
   table: string;
   action: 'get_all' | 'get_by_id' | 'create' | 'update' | 'delete' | 'search' | 'count';
   id?: string;
