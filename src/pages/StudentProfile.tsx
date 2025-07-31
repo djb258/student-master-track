@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { Share2, Copy, Mail } from "lucide-react";
 
 interface Student {
   id: string;
@@ -94,6 +97,37 @@ const getDummyStudent = (studentId: string): Student => {
 export default function StudentProfile() {
   const { student_id = "1" } = useParams<{ student_id: string }>();
   const student = getDummyStudent(student_id);
+  const { toast } = useToast();
+
+  // Generate unique shareable URL for the weekly highlight
+  const generateHighlightUrl = () => {
+    const currentWeek = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
+    return `https://student-master-track.lovable.app/highlight/${student_id}/${currentWeek}`;
+  };
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast({
+        title: "Copied!",
+        description: "Shareable link copied to clipboard",
+        duration: 2000,
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to copy link",
+        variant: "destructive",
+        duration: 2000,
+      });
+    }
+  };
+
+  const shareViaEmail = (url: string) => {
+    const subject = `${student.first_name} ${student.last_name} - Weekly Sports Highlight`;
+    const body = `Check out ${student.first_name}'s amazing sports performance this week!\n\n${url}`;
+    window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-6">
@@ -358,13 +392,41 @@ export default function StudentProfile() {
             {/* ESPN-Style Weekly Highlight */}
             <Card className="bg-white/95 border-gray-300 backdrop-blur-sm">
               <CardHeader>
-                <div className="flex items-center gap-2">
-                  <div className="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">SPORTS</div>
-                  <CardTitle className="text-gray-900 text-lg">Weekly Sports Highlight</CardTitle>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">SPORTS</div>
+                    <CardTitle className="text-gray-900 text-lg">Weekly Sports Highlight</CardTitle>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard(generateHighlightUrl())}
+                      className="border-gray-300 hover:bg-gray-100 text-gray-700"
+                    >
+                      <Copy className="h-4 w-4 mr-1" />
+                      Copy Link
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => shareViaEmail(generateHighlightUrl())}
+                      className="border-gray-300 hover:bg-gray-100 text-gray-700"
+                    >
+                      <Mail className="h-4 w-4 mr-1" />
+                      Email
+                    </Button>
+                  </div>
                 </div>
                 <CardDescription className="text-gray-700">
                   Week of {new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString()} - {new Date().toLocaleDateString()}
                 </CardDescription>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 mt-2">
+                  <p className="text-blue-700 text-xs">
+                    <Share2 className="h-3 w-3 inline mr-1" />
+                    <strong>Shareable Link:</strong> {generateHighlightUrl()}
+                  </p>
+                </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="border-l-4 border-yellow-500 pl-4">
