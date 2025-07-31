@@ -356,31 +356,31 @@ export default function StudentProfile() {
             </div>
 
             {/* ESPN-Style Weekly Highlight */}
-            <Card className="bg-gradient-to-r from-red-600/20 to-blue-600/20 border-red-500/30 backdrop-blur-sm">
+            <Card className="bg-white/95 border-gray-300 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <div className="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">SPORTS</div>
-                  <CardTitle className="text-white text-lg">Weekly Sports Highlight</CardTitle>
+                  <CardTitle className="text-gray-900 text-lg">Weekly Sports Highlight</CardTitle>
                 </div>
-                <CardDescription className="text-white/80">
+                <CardDescription className="text-gray-700">
                   Week of {new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString()} - {new Date().toLocaleDateString()}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="border-l-4 border-yellow-400 pl-4">
-                  <h3 className="text-white font-bold text-lg mb-2">
+                <div className="border-l-4 border-yellow-500 pl-4">
+                  <h3 className="text-gray-900 font-bold text-lg mb-2">
                     Alex Johnson Leads Eagles to Victory in Clutch Performance
                   </h3>
-                  <p className="text-white/90 mb-3">
+                  <p className="text-gray-800 mb-3">
                     In a thrilling 78-72 victory over the Riverside Hawks on Friday night, sophomore point guard 
                     Alex Johnson delivered when it mattered most. With the Eagles trailing by 5 points entering 
                     the fourth quarter, Johnson took control of the game.
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
-                    <div className="bg-black/20 rounded-lg p-3">
-                      <h4 className="text-yellow-400 font-semibold mb-2">Game Stats</h4>
-                      <ul className="text-white/90 text-sm space-y-1">
+                    <div className="bg-gray-100 rounded-lg p-3">
+                      <h4 className="text-orange-600 font-semibold mb-2">Game Stats</h4>
+                      <ul className="text-gray-800 text-sm space-y-1">
                         <li>• 22 points (season high)</li>
                         <li>• 8 assists</li>
                         <li>• 5 rebounds</li>
@@ -389,9 +389,9 @@ export default function StudentProfile() {
                       </ul>
                     </div>
                     
-                    <div className="bg-black/20 rounded-lg p-3">
-                      <h4 className="text-blue-400 font-semibold mb-2">Key Moments</h4>
-                      <ul className="text-white/90 text-sm space-y-1">
+                    <div className="bg-gray-100 rounded-lg p-3">
+                      <h4 className="text-blue-600 font-semibold mb-2">Key Moments</h4>
+                      <ul className="text-gray-800 text-sm space-y-1">
                         <li>• Game-tying 3-pointer with 2:47 left</li>
                         <li>• Crucial steal leading to fast break</li>
                         <li>• Perfect 4/4 free throws in final minute</li>
@@ -400,22 +400,22 @@ export default function StudentProfile() {
                     </div>
                   </div>
                   
-                  <p className="text-white/90 mb-3">
+                  <p className="text-gray-800 mb-3">
                     "Alex showed incredible poise for a sophomore," said Coach Martinez. "His court vision and 
                     decision-making in pressure situations continue to impress. The way he distributed the ball 
                     and found open teammates while also scoring when needed was exceptional."
                   </p>
                   
-                  <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-3">
-                    <h4 className="text-green-300 font-semibold mb-1">Season Impact</h4>
-                    <p className="text-white/90 text-sm">
+                  <div className="bg-green-100 border border-green-300 rounded-lg p-3">
+                    <h4 className="text-green-700 font-semibold mb-1">Season Impact</h4>
+                    <p className="text-gray-800 text-sm">
                       This performance brings Alex's season averages to 14.8 PPG, 4.9 APG, and 4.2 RPG. 
                       The Eagles improve to 14-4 overall and maintain their #2 ranking in the district standings.
                     </p>
                   </div>
                   
-                  <div className="mt-4 pt-3 border-t border-white/20">
-                    <p className="text-white/70 text-xs">
+                  <div className="mt-4 pt-3 border-t border-gray-300">
+                    <p className="text-gray-600 text-xs">
                       <strong>Next Game:</strong> vs. Lincoln Prep Lions - Tuesday, 7:00 PM (Home)
                     </p>
                   </div>
