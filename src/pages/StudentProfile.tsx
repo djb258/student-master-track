@@ -485,35 +485,96 @@ export default function StudentProfile() {
               </CardContent>
             </Card>
 
-            {/* Sports Event Photo Gallery */}
+            {/* Tagged Event Photos from Database */}
             <Card className="bg-white/95 border-gray-300 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-gray-900 flex items-center gap-2">
-                    📸 Event Photos & Media
+                    🏷️ Tagged Event Photos
                   </CardTitle>
-                  <Button 
-                    size="sm" 
-                    className="bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    Upload Photos
-                  </Button>
+                  <Badge className="bg-green-100 text-green-700 border-green-300">
+                    8 New Photos Tagged
+                  </Badge>
                 </div>
                 <CardDescription className="text-gray-700">
-                  Photos from recent games and sporting events
+                  Photos from events where Alex Johnson has been automatically tagged
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {/* Recent Game Photos */}
+                {/* Auto-Tagged Game Photos */}
                 <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-gray-800 font-semibold flex items-center gap-2">
+                      🏀 Eagles vs Hawks - Game Winner Shot
+                    </h4>
+                    <Badge variant="outline" className="border-blue-300 text-blue-700">
+                      Photo ID: EV-2024-BB-156
+                    </Badge>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=300&h=200&fit=crop" 
+                        alt="Alex Johnson making game-winning shot" 
+                        className="rounded-lg w-full h-32 object-cover"
+                      />
+                      <div className="absolute top-2 left-2">
+                        <Badge className="bg-blue-600 text-white text-xs">
+                          Tagged: Alex Johnson
+                        </Badge>
+                      </div>
+                      <div className="absolute bottom-2 right-2">
+                        <Badge className="bg-green-600 text-white text-xs">
+                          Game Winner
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-gray-800 text-sm font-semibold">Auto-Detection Details:</p>
+                      <ul className="text-gray-700 text-xs space-y-1">
+                        <li>• <strong>Confidence:</strong> 97.3%</li>
+                        <li>• <strong>Jersey #:</strong> 23 (Verified)</li>
+                        <li>• <strong>Action:</strong> Shooting Motion</li>
+                        <li>• <strong>Timestamp:</strong> 4Q 2:47 remaining</li>
+                        <li>• <strong>Photographer:</strong> School Athletics Dept</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-gray-800 text-sm font-semibold">Share Options:</p>
+                      <div className="space-y-2">
+                        <Button 
+                          size="sm" 
+                          variant="outline" 
+                          className="w-full text-xs"
+                          onClick={() => copyToClipboard(`https://photos.school-athletics.com/event/EV-2024-BB-156/player/${student_id}`)}
+                        >
+                          <Copy className="h-3 w-3 mr-1" />
+                          Copy Photo Link
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          variant="outline" 
+                          className="w-full text-xs"
+                          onClick={() => shareViaEmail(`https://photos.school-athletics.com/event/EV-2024-BB-156/player/${student_id}`)}
+                        >
+                          <Mail className="h-3 w-3 mr-1" />
+                          Email to Family
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Tagged Photos Grid */}
+                <div className="border-t border-gray-200 pt-4">
                   <h4 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
-                    🏀 vs. Riverside Hawks - {new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString()}
+                    📷 More Tagged Photos from this Event
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div className="relative group">
                       <img 
-                        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=200&h=150&fit=crop" 
-                        alt="Alex shooting basketball" 
+                        src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=200&h=150&fit=crop" 
+                        alt="Alex in team huddle" 
                         className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
@@ -524,113 +585,68 @@ export default function StudentProfile() {
                     </div>
                     <div className="relative group">
                       <img 
-                        src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=200&h=150&fit=crop" 
-                        alt="Basketball team huddle" 
-                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <Badge className="bg-green-600 text-white text-xs">
-                          Team Photo
-                        </Badge>
-                      </div>
-                    </div>
-                    <div className="relative group">
-                      <img 
                         src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=200&h=150&fit=crop" 
-                        alt="Basketball game action" 
+                        alt="Alex during game action" 
                         className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <Badge className="bg-orange-600 text-white text-xs">
-                          Game Winner
+                        <Badge className="bg-blue-600 text-white text-xs">
+                          Tagged: Alex Johnson
                         </Badge>
                       </div>
                     </div>
                     <div className="relative group">
                       <img 
                         src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=200&h=150&fit=crop" 
-                        alt="Celebration after win" 
+                        alt="Alex celebrating victory" 
                         className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <Badge className="bg-yellow-600 text-white text-xs">
-                          Victory Celebration
+                        <Badge className="bg-blue-600 text-white text-xs">
+                          Tagged: Alex Johnson
                         </Badge>
                       </div>
                     </div>
-                  </div>
-                </div>
-
-                {/* Practice Photos */}
-                <div className="border-t border-gray-200 pt-4">
-                  <h4 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
-                    🏃‍♂️ Practice Session - {new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString()}
-                  </h4>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     <div className="relative group">
                       <img 
                         src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=150&fit=crop" 
-                        alt="Dribbling practice" 
+                        alt="Alex in practice" 
                         className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <Badge className="bg-purple-600 text-white text-xs">
-                          Skill Training
-                        </Badge>
-                      </div>
-                    </div>
-                    <div className="relative group">
-                      <img 
-                        src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=200&h=150&fit=crop" 
-                        alt="Team practice" 
-                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <Badge className="bg-indigo-600 text-white text-xs">
-                          Team Drill
-                        </Badge>
-                      </div>
-                    </div>
-                    <div className="relative group">
-                      <img 
-                        src="https://images.unsplash.com/photo-1515523110800-9415d13b84a8?w=200&h=150&fit=crop" 
-                        alt="Coach instruction" 
-                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <Badge className="bg-teal-600 text-white text-xs">
-                          Coaching Moment
+                        <Badge className="bg-blue-600 text-white text-xs">
+                          Tagged: Alex Johnson
                         </Badge>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Photo Sharing Options */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                {/* Database Source Info */}
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-blue-800 font-semibold text-sm">Share Event Photos</p>
-                      <p className="text-blue-600 text-xs">Create shareable albums for family and friends</p>
+                      <p className="text-gray-800 font-semibold text-sm">🔗 Linked from Event Database</p>
+                      <p className="text-gray-600 text-xs">Auto-tagged photos from school athletics photography system</p>
                     </div>
                     <div className="flex gap-2">
                       <Button 
                         size="sm" 
                         variant="outline"
-                        className="border-blue-300 text-blue-700 hover:bg-blue-100"
-                        onClick={() => copyToClipboard(`https://student-master-track.lovable.app/photos/${student_id}/basketball/${new Date().toISOString().slice(0, 10)}`)}
+                        className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                        onClick={() => copyToClipboard(`https://photos.school-athletics.com/tagged/alex-johnson-23`)}
                       >
                         <Share2 className="h-3 w-3 mr-1" />
-                        Share Album
+                        Share All Tagged
                       </Button>
                       <Button 
                         size="sm" 
                         variant="outline"
-                        className="border-blue-300 text-blue-700 hover:bg-blue-100"
-                        onClick={() => shareViaEmail(`https://student-master-track.lovable.app/photos/${student_id}/basketball/${new Date().toISOString().slice(0, 10)}`)}
+                        className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                        onClick={() => shareViaEmail(`https://photos.school-athletics.com/tagged/alex-johnson-23`)}
                       >
                         <Mail className="h-3 w-3 mr-1" />
-                        Email Album
+                        Email Collection
                       </Button>
                     </div>
                   </div>
