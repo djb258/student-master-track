@@ -484,6 +484,159 @@ export default function StudentProfile() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Sports Event Photo Gallery */}
+            <Card className="bg-white/95 border-gray-300 backdrop-blur-sm">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
+                    📸 Event Photos & Media
+                  </CardTitle>
+                  <Button 
+                    size="sm" 
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Upload Photos
+                  </Button>
+                </div>
+                <CardDescription className="text-gray-700">
+                  Photos from recent games and sporting events
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {/* Recent Game Photos */}
+                <div>
+                  <h4 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
+                    🏀 vs. Riverside Hawks - {new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString()}
+                  </h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=200&h=150&fit=crop" 
+                        alt="Alex shooting basketball" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-blue-600 text-white text-xs">
+                          Tagged: Alex Johnson
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=200&h=150&fit=crop" 
+                        alt="Basketball team huddle" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-green-600 text-white text-xs">
+                          Team Photo
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=200&h=150&fit=crop" 
+                        alt="Basketball game action" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-orange-600 text-white text-xs">
+                          Game Winner
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=200&h=150&fit=crop" 
+                        alt="Celebration after win" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-yellow-600 text-white text-xs">
+                          Victory Celebration
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Practice Photos */}
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
+                    🏃‍♂️ Practice Session - {new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString()}
+                  </h4>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=150&fit=crop" 
+                        alt="Dribbling practice" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-purple-600 text-white text-xs">
+                          Skill Training
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=200&h=150&fit=crop" 
+                        alt="Team practice" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-indigo-600 text-white text-xs">
+                          Team Drill
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1515523110800-9415d13b84a8?w=200&h=150&fit=crop" 
+                        alt="Coach instruction" 
+                        className="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <Badge className="bg-teal-600 text-white text-xs">
+                          Coaching Moment
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Photo Sharing Options */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-blue-800 font-semibold text-sm">Share Event Photos</p>
+                      <p className="text-blue-600 text-xs">Create shareable albums for family and friends</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        className="border-blue-300 text-blue-700 hover:bg-blue-100"
+                        onClick={() => copyToClipboard(`https://student-master-track.lovable.app/photos/${student_id}/basketball/${new Date().toISOString().slice(0, 10)}`)}
+                      >
+                        <Share2 className="h-3 w-3 mr-1" />
+                        Share Album
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        className="border-blue-300 text-blue-700 hover:bg-blue-100"
+                        onClick={() => shareViaEmail(`https://student-master-track.lovable.app/photos/${student_id}/basketball/${new Date().toISOString().slice(0, 10)}`)}
+                      >
+                        <Mail className="h-3 w-3 mr-1" />
+                        Email Album
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         )}
       </div>
