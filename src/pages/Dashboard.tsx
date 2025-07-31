@@ -12,14 +12,14 @@ const Dashboard = () => {
       route: "/intake"
     },
     {
+      title: "Reports & Analytics",
+      description: "Generate reports and view analytics.",
+      route: "/reports"
+    },
+    {
       title: "Media Uploads",
       description: "Upload and manage student media files.",
       route: "/media"
-    },
-    {
-      title: "Reporting",
-      description: "Generate reports and analytics.",
-      route: "/reports"
     },
     {
       title: "Settings",
