@@ -20,7 +20,7 @@ const Intake = () => {
   const { toast } = useToast();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [profileUrl, setProfileUrl] = useState("");
+  
   const [studentEmail, setStudentEmail] = useState("");
   const [studentPhone, setStudentPhone] = useState("");
   const [guardians, setGuardians] = useState<Guardian[]>([
@@ -51,10 +51,10 @@ const Intake = () => {
 
     try {
       // Validate required fields
-      if (!firstName.trim() || !lastName.trim() || !profileUrl.trim()) {
+      if (!firstName.trim() || !lastName.trim()) {
         toast({
           title: "Missing Information",
-          description: "Please enter first name, last name, and profile URL.",
+          description: "Please enter first name and last name.",
           variant: "destructive"
         });
         return;
@@ -73,7 +73,6 @@ const Intake = () => {
       const payload = {
         first_name: firstName,
         last_name: lastName,
-        profile_url: profileUrl,
         student_email: studentEmail,
         student_phone: studentPhone,
         guardians: guardians.filter(g => g.first_name.trim() && g.last_name.trim())
@@ -99,7 +98,6 @@ const Intake = () => {
       // Reset form
       setFirstName("");
       setLastName("");
-      setProfileUrl("");
       setStudentEmail("");
       setStudentPhone("");
       setGuardians([{ id: "1", first_name: "", last_name: "", relationship: "", phone: "", email: "" }]);
@@ -158,16 +156,6 @@ const Intake = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Enter last name"
-                    required
-                  />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="profileUrl">Profile URL *</Label>
-                  <Input
-                    id="profileUrl"
-                    value={profileUrl}
-                    onChange={(e) => setProfileUrl(e.target.value)}
-                    placeholder="Enter profile URL"
                     required
                   />
                 </div>
