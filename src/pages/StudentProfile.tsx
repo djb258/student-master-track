@@ -4,8 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Share2, Copy, Mail, Brain } from "lucide-react";
+import { Share2, Copy, Mail, Brain, GraduationCap } from "lucide-react";
 import AITutor from "@/components/ai/AITutor";
+import StudyMode from "@/components/ai/StudyMode";
 
 interface Student {
   id: string;
@@ -692,6 +693,24 @@ export default function StudentProfile() {
                 { subject: "History", grade: 92 }
               ]
             }}
+          />
+        </div>
+
+        {/* ChatGPT Study Mode Section */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-3 mb-6">
+            <GraduationCap className="h-8 w-8 text-green-400" />
+            <h2 className="text-2xl font-bold text-white">
+              🎓 ChatGPT Study Mode
+            </h2>
+            <Badge variant="secondary" className="bg-green-500/20 text-green-300 border-green-500/30">
+              New July 2025
+            </Badge>
+          </div>
+          
+          <StudyMode 
+            studentName={`${student.first_name} ${student.last_name}`}
+            studentGrade={student.grade}
           />
         </div>
       </div>
