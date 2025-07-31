@@ -55,10 +55,6 @@ const Reports = () => {
     { name: 'Apr', value: 75 },
     { name: 'May', value: 82 },
   ];
-    { id: '1', name: 'John Doe', email: 'john@example.com', grade: 'A', weight: 145, experience: '3 years', created_at: '2024-01-15' },
-    { id: '2', name: 'Jane Smith', email: 'jane@example.com', grade: 'B+', weight: 132, experience: '2 years', created_at: '2024-01-16' },
-    { id: '3', name: 'Mike Johnson', email: 'mike@example.com', grade: 'A-', weight: 158, experience: '4 years', created_at: '2024-01-17' },
-  ];
 
   // Table columns for students
   const studentColumns: ColumnDef<Student>[] = [
